@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>EntrenarSE - Player</title>
+	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="http://netdna.jboxcdn.com/0.2.1/jBox.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+	<div id="loader">
+		<div class="spinner">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
+			<p>Loading Player...</p>
+		</div>
+	</div>
+	<header id="header" class="header">
+		<figure class="logo">
+			<img src="img/logo.png" alt="EntrenarSE" />
+		</figure>
+		<span id="spanTitle"></span>
+		<a href="#" id="myaccount">My Account</a>
+		<a href="#" id="goback">Go Back</a>
+	</header>
+	<!-- Contenido de la presentacion: Slides, Speaker, Files, etc -->
+	<section id="content">
+		<img src="img/toogle.png" onclick="toogleContainer()" alt="toogle" class="toogle" />
+		<!-- Aca van los botones para el toogle de las tabs -->
+		<a data-tooltip="Go to handouts" onclick="goto(1)"class="tabs fa fa-cloud-download"></a>
+		<a data-tooltip="Go to comments" onclick="goto(2)"class="tabs fa fa-comments"></a>
+		<a data-tooltip="Go to content"  onclick="goto(3)"class="tabs fa fa-caret-square-o-right"></a>
+		<!-- Fin botones de tabs -->
+		<!-- Presentation Content -->
+		<div class="container" id="presentationContent">
+			<div class="titleBar">Slides</div>
+			<div class="slidesContainer" id="slides">
+
+			</div>
+			<div class="titleBar">Speaker</div>
+			<div class="speakerContainer">
+				<figure class="speakerCont" id="speakerPhoto">
+					
+				</figure>
+				<span class="speakerName" id="speakerName"></span>
+				<span class="speakerBio" id="speakerBio"></span>
+			</div>
+			<div class="titleBar" id="contactSpeakerTitle"></div>
+			<div class="contactContainer">
+				<a target="_blank" href="" class="fa fa-linkedin-square"></a>
+				<a target="_blank" href="" class="fa fa-facebook-square"></a>
+				<a target="_blank" href="" class="fa fa-twitter-square"></a>
+				<a target="_blank" href="" class="fa fa-google-plus-square"></a>
+				<a target="_blank" href="" class="fa fa-envelope-square"></a>
+			</div>
+		</div>
+		<!-- Fin Presentation Content -->
+		<!-- Presentation Comments -->
+		<div class="container" id="presentationComments">
+			<div class="titleBar">Comments</div>
+			
+		</div>
+		<!-- Fin Presentation Comments -->
+		<!-- Presentation Downloads -->
+		<div class="container" id="presentationDownloads">
+			<div class="titleBar">Handouts</div>
+			<div class="handoutsContainer">
+				<ul class="list">
+					<li class="handoutItem pdf">
+						<span class="handoutFileName">brochure.pdf</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem pdf">
+						<span class="handoutFileName">indications.pdf</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem doc">
+						<span class="handoutFileName">to-do-lists.doc</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem xls">
+						<span class="handoutFileName">numbers-nov-2013.xls</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem web">
+						<span class="handoutFileName">index.html</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem ppt">
+						<span class="handoutFileName">presentation.ppt</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem pdf">
+						<span class="handoutFileName">brochure.pdf</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem pdf">
+						<span class="handoutFileName">indications.pdf</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem doc">
+						<span class="handoutFileName">to-do-lists.doc</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem xls">
+						<span class="handoutFileName">numbers-nov-2013.xls</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem web">
+						<span class="handoutFileName">index.html</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+					<li class="handoutItem ppt">
+						<span class="handoutFileName">presentation.ppt</span>
+						<a href="" class="fa fa-download iconDownloadHandout"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+	<!-- Fin contenido de la presentacion -->
+	<!-- Stage donde se va a visualizar el contenido -->
+	<section class="stage" id="stage">
+		<div class="navigationContainer">
+			<a id="previous" class="fa fa-arrow-left"></a>
+			<span class="slideTitle" id="slideTitle"></span>
+			<a id="next" class="fa fa-arrow-right"></a>
+		</div>
+		<div class="stageMain" id="stageMain">
+		</div>
+		<div class="playerControls">
+			<a id="playPauseIcon" onclick="playPause()" class="fa fa-play"></a>
+			<span class="currentTime">00:00</span>
+			<progress id="currentVideoTimeSlider" class="currentVideoTimeSlider" min="0" max="1000" value="0"></progress>
+			<span class="videoDuration">00:00</span>
+			<a class="fa fa-expand" onclick="toogleFullScreen()"></a>
+			<i class="fa fa-volume-up"></i>
+			<input id="volumeControl" type="range" step="0.1" min="0" max="10" value="10" />
+		</div>
+	</section>
+	<section class="stage" id="evaStage">
+		<div class="navigationContainer">
+			<a id="eva-previous" class="fa fa-arrow-left"></a>
+			<span class="slideTitle" id="eva-slideTitle"></span>
+			<a id="eva-next" class="fa fa-arrow-right"></a>
+		</div>
+		<div class="eva-stageMain" id="eva-stageMain">
+		</div>
+	</section>
+	<div class="fullscreenControls">
+		<a id="fs_playPauseIcon" onclick="playPause()" class="fa fa-play"></a>
+		<span class="currentTime">00:00</span>
+		<progress id="fs_currentVideoTimeSlider" class="currentVideoTimeSlider" min="0" max="1000" value="0"></progress>
+		<span class="videoDuration">00:00</span>
+		<a class="fa fa-compress" onclick="quitFullScreen()"></a>
+		<i class="fa fa-volume-up"></i>
+		<input id="fs_volumeControl" type="range" step="0.1" min="0" max="10" value="10" />
+	</div>
+	<script src="js/jquery.min.1-11.js"></script>
+	<script src="http://netdna.jboxcdn.com/0.2.1/jBox.min.js"></script>
+	<script src="js/ytapiplayer/swfobject.js"></script>
+	<script src="js/scripts.js"></script>
+	<script src="js/json.js"></script>
+</body>
+</html>
